@@ -4,9 +4,11 @@ import functions
 todos = functions.get_todos()
 
 def add_todo():
-    todo = st.session_state["todos"].title() + '\n'
-    todos.append(todo)
-    functions.write_todos(todos)
+    todo = st.session_state["todos"].capitalize().strip()
+    if todo:
+        todos.append(todo + '\n')
+        functions.write_todos(todos)
+        st.session_state["todos"] = ""
 
 
 st.title("ZapList")
@@ -21,5 +23,7 @@ for index , todo in enumerate(todos):
         st.rerun()
 
 
-st.text_input(label="", placeholder="Enter a todo...",
-              on_change= add_todo, key="todos")
+st.text_input(label="Enter a task", label_visibility = "hidden",
+              placeholder="Enter a todo...", key="todos", on_change=add_todo)
+
+st.button("Add Task", on_click=add_todo)
