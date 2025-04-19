@@ -21,5 +21,5 @@ for index , todo in enumerate(todos):
         st.rerun()
 
 
-st.text_input(placeholder="Enter a todo...",
+st.text_input(label="", placeholder="Enter a todo...",
               on_change= add_todo, key="todos")
