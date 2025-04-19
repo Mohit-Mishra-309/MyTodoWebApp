@@ -9,8 +9,8 @@ def add_todo():
     functions.write_todos(todos)
 
 
-st.title("My To-do App")
-st.subheader("Increase your productivity ")
+st.title("ZapList")
+st.subheader("Strike through your day—one task at a time.")
 
 for index , todo in enumerate(todos):
     checkbox = st.checkbox(todo , key = todo)
@@ -21,5 +21,5 @@ for index , todo in enumerate(todos):
         st.rerun()
 
 
-st.text_input(label="", placeholder="Enter a todo...",
+st.text_input(placeholder="Enter a todo...",
               on_change= add_todo, key="todos")
