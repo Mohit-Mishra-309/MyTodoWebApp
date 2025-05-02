@@ -4,9 +4,9 @@ import functions
 todos = functions.get_todos()
 
 def add_todo():
-    todo = st.session_state["todos"].capitalize().strip()
-    if todo:
-        todos.append(todo + '\n')
+    todo_task = st.session_state["todos"].capitalize().strip()
+    if todo_task:
+        todos.append(todo_task + '\n')
         functions.write_todos(todos)
         st.session_state["todos"] = ""
 
