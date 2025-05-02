@@ -4,9 +4,9 @@ import functions
 todos = functions.get_todos()
 
 def add_todo():
-    todo_task = st.session_state["todos"].capitalize().strip()
-    if todo_task:
-        todos.append(todo_task + '\n')
+    todo= st.session_state["todos"].capitalize().strip()
+    if todo:
+        todos.append(todo + '\n')
         functions.write_todos(todos)
         st.session_state["todos"] = ""
 
@@ -15,7 +15,7 @@ st.title("ZapList")
 st.subheader("Strike through your day—one task at a time.")
 
 for index , todo in enumerate(todos):
-    checkbox = st.checkbox(todo , key = todo)
+    checkbox = st.checkbox(todo , key = f"{todo}_{index}")
     if checkbox:
         todos.pop(index)
         functions.write_todos(todos)
